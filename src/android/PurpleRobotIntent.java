@@ -15,23 +15,16 @@ public class PurpleRobotIntent extends CordovaPlugin {
   private static final String PURPLE_ROBOT =
     "edu.northwestern.cbits.purple_robot_manager";
 
-  @Override
   public void execute(String action) {
     if (SEND.equals(action)) {
       Activity activity = cordova.getActivity();
       Context context = activity.getApplicationContext();
       PackageManager manager = context.getPackageManager();
+      Intent i = manager.getLaunchIntentForPackage(PURPLE_ROBOT);
 
-      try {
-        Intent i = manager.getLaunchIntentForPackage(PURPLE_ROBOT);
-        if (i == null) {
-          return;
-        }
-
+      if (i != null) {
         i.addCategory(Intent.CATEGORY_LAUNCHER);
         context.startActivity(i);
-      } catch (PackageManager.NameNotFoundException e) {
-        // silently cry
       }
     }
   }

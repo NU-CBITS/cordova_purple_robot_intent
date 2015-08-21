@@ -20,6 +20,6 @@
       <clobbers target="cordova.plugins.PurpleRobotIntent" />
     </js-module>
 
-    <source-file src="src/android/PurpleRobotIntent.java" target-dir="src/edu/northwestern/cbits/purple_robot_intent" />
+    <source-file src="src/android/PurpleRobotIntent.java" target-dir="src/edu/northwestern/cbits" />
   </platform>
 </plugin>
