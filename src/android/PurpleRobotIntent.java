@@ -1,4 +1,4 @@
-package org.apache.cordova.plugin;
+package edu.northwestern.cbits;
 
 import android.app.Activity;
 import android.content.Context;
