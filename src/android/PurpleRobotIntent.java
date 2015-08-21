@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 
+import org.apache.cordova.CallbackContext;
 import org.apache.cordova.CordovaPlugin;
 
 /*
@@ -15,7 +16,11 @@ public class PurpleRobotIntent extends CordovaPlugin {
   private static final String PURPLE_ROBOT =
     "edu.northwestern.cbits.purple_robot_manager";
 
-  public void execute(String action) {
+  @Override
+  public boolean execute(String action, String _rawArgs,
+                         CallbackContext _callbackContext) {
+    boolean result = false;
+
     if (SEND.equals(action)) {
       Activity activity = cordova.getActivity();
       Context context = activity.getApplicationContext();
@@ -25,7 +30,10 @@ public class PurpleRobotIntent extends CordovaPlugin {
       if (i != null) {
         i.addCategory(Intent.CATEGORY_LAUNCHER);
         context.startActivity(i);
+        result = true;
       }
     }
+
+    return result;
   }
 }
