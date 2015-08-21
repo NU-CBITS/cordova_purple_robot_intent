@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  id="edu.northwestern.cbits.PurpleRobotIntent"
+  version="0.0.1">
+  <engines>
+    <engine name="cordova-android" version="3.6.4" />
+  </engines>
+
+  <name>Cordova Purple Robot Intent</name>
+
+  <platform name="android">
+    <config-file target="config.xml" parent="/*">
+      <feature name="PurpleRobotIntent">
+        <param name="android-package" value="edu.northwestern.cbits.PurpleRobotIntent" />
+      </feature>
+    </config-file>
+
+    <js-module name="PurpleRobotIntent" src="www/PurpleRobotIntent.js">
+      <clobbers target="cordova.plugins.PurpleRobotIntent" />
+    </js-module>
+
+    <source-file src="src/android/PurpleRobotIntent.java" target-dir="src/edu/northwestern/cbits/purple_robot_intent" />
+  </platform>
+</plugin>
