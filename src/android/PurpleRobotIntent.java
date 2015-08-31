@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.database.Cursor;
-import android.util.Log;
 
 import org.apache.cordova.CallbackContext;
 import org.apache.cordova.CordovaPlugin;
@@ -31,15 +30,11 @@ public class PurpleRobotIntent extends CordovaPlugin {
 
       Cursor c = activity.getContentResolver().query(PurpleRobotIntent.PR_LAST_KNOWN_PROBE_VALUES, null, null, null, null);
       
-      Log.e("HW", "CURSOR: " + c.getCount());
-      
-      c.close();
+      if (c != null)
+        c.close();
 
       Intent intent = new Intent("edu.northwestern.cbits.purple_robot_manager.NUDGE_APP");
       activity.sendBroadcast(intent);
-
-      Log.e("HW", "BCAST: " + intent);
-
     }
 
     return result;
