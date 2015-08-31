@@ -5,6 +5,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
+import android.database.Cursor;
+import android.util.Log;
 
 import org.apache.cordova.CallbackContext;
 import org.apache.cordova.CordovaPlugin;
@@ -27,7 +29,11 @@ public class PurpleRobotIntent extends CordovaPlugin {
     if (SEND.equals(action)) {
       Activity activity = cordova.getActivity();
 
-      activity.getContentResolver().query(PurpleRobotIntent.PR_LAST_KNOWN_PROBE_VALUES, null, null, null, null);
+      Cursor c = activity.getContentResolver().query(PurpleRobotIntent.PR_LAST_KNOWN_PROBE_VALUES, null, null, null, null);
+      
+      Log.e("HW", "CURSOR: " + c.getCount());
+      
+      c.close();
 
     }
 
