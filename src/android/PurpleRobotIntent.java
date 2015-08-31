@@ -35,6 +35,11 @@ public class PurpleRobotIntent extends CordovaPlugin {
       
       c.close();
 
+      Intent intent = new Intent("edu.northwestern.cbits.purple_robot_manager.NUDGE_APP");
+      activity.sendBroadcast(intent);
+
+      Log.e("HW", "BCAST: " + intent);
+
     }
 
     return result;
