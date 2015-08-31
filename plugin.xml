@@ -20,6 +20,10 @@
       <clobbers target="cordova.plugins.PurpleRobotIntent" />
     </js-module>
 
+		<config-file target="AndroidManifest.xml" parent="/manifest">
+      <uses-permission android:name="edu.northwestern.cbits.purple_robot_manager.FETCH_DATA" />
+    </config-file>
+
     <source-file src="src/android/PurpleRobotIntent.java" target-dir="src/edu/northwestern/cbits" />
   </platform>
 </plugin>
