@@ -4,7 +4,7 @@
   id="edu.northwestern.cbits.PurpleRobotIntent"
   version="0.0.1">
   <engines>
-    <engine name="cordova-android" version="3.6.4" />
+    <engine name="cordova-android" version="4.1.1" />
   </engines>
 
   <name>Cordova Purple Robot Intent</name>
@@ -19,6 +19,10 @@
     <js-module name="PurpleRobotIntent" src="www/PurpleRobotIntent.js">
       <clobbers target="cordova.plugins.PurpleRobotIntent" />
     </js-module>
+
+		<config-file target="AndroidManifest.xml" parent="/manifest">
+      <uses-permission android:name="edu.northwestern.cbits.purple_robot_manager.FETCH_DATA" />
+    </config-file>
 
     <source-file src="src/android/PurpleRobotIntent.java" target-dir="src/edu/northwestern/cbits" />
   </platform>
