@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.net.Uri;
 
 import org.apache.cordova.CallbackContext;
 import org.apache.cordova.CordovaPlugin;
@@ -16,6 +17,8 @@ public class PurpleRobotIntent extends CordovaPlugin {
   private static final String PURPLE_ROBOT =
     "edu.northwestern.cbits.purple_robot_manager";
 
+  public static final Uri PR_LAST_KNOWN_PROBE_VALUES = Uri.parse("content://edu.northwestern.cbits.purple_robot_manager.content/recent_probe_values");
+
   @Override
   public boolean execute(String action, String _rawArgs,
                          CallbackContext _callbackContext) {
@@ -23,15 +26,9 @@ public class PurpleRobotIntent extends CordovaPlugin {
 
     if (SEND.equals(action)) {
       Activity activity = cordova.getActivity();
-      Context context = activity.getApplicationContext();
-      PackageManager manager = context.getPackageManager();
-      Intent i = manager.getLaunchIntentForPackage(PURPLE_ROBOT);
 
-      if (i != null) {
-        i.addCategory(Intent.CATEGORY_LAUNCHER);
-        context.startActivity(i);
-        result = true;
-      }
+      activity.getContentResolver().query(PurpleRobotIntent.PR_LAST_KNOWN_PROBE_VALUES, null, null, null, null);
+
     }
 
     return result;
